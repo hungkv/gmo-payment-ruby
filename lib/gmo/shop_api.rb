@@ -475,6 +475,41 @@ module GMO
         post_request name, options
       end
 
+      def entry_tran_unionpay(options = {})
+        name = "EntryTranUnionpay.idPass"
+        required = [:order_id, :job_cd, :amount, :td_flag]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      def exec_tran_unionpay(options = {})
+        name = "ExecTranUnionpay.idPass"
+        required = [:access_id, :access_pass, :order_id, :ret_url, :error_rcv_url]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      def sale_tran_unionpay(options = {})
+        name = "UnionpaySales.idPass"
+        required = [:access_id, :access_pass, :order_id, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      def cancel_tran_unionpay(options = {})
+        name = "UnionpayCancel.idPass"
+        required = [:access_id, :access_pass, :order_id]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      def return_tran_unionpay(options = {})
+        name = "UnionpayReturn.idPass"
+        required = [:access_id, :access_pass, :order_id, :cancel_amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
       private
 
         def api_call(name, args = {}, verb = "post", options = {})
